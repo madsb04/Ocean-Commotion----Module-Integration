@@ -7,8 +7,8 @@ const App = {
 
         // These are constants that will be drawn on for the app's home page
         const homeImage = "Whale-Home.jpg"
-        const title = "Ocean Commotion";
-        const description = "Let's find out how online shopping impacts whales and the earth!";
+        const title = "Let's find out how online shopping impacts whales and the earth!"
+        const description = "Click the button below to start your journey through the ocean and discover how your online shopping habits impact whales and the health of our planet!"
         const button = "Begin!"
 
         // These constants and function determine when the home page and stepper are present (ie. true, false)
@@ -16,6 +16,13 @@ const App = {
         const showHomepage = ref(true)
         const showStepper = ref(false)
         const nextButtonLabel = ref(null)
+
+        const openDrawer = ref(false)
+
+
+        function toggleDrawer() {
+         openDrawer.value = !openDrawer.value
+}
 
 
         function toggleHomepage() {
@@ -98,7 +105,7 @@ const App = {
         ];
         
         // These constants label the items in the menu in the app bar
-        const items = [
+        const projects = [
             { title: 'Home Page', link: 'https://artssci.github.io/Maritime-Commerce-and-Whale-Risks-Collective-App/'},
             { title: 'Ocean Route Explorer', link: 'https://ameliag116.github.io/Ocean-Route-Explorer/'},
             { title: 'Temporal Tides', link: 'https://nkkkkkkkkkkk.github.io/Temporal-Tides/'},
@@ -108,8 +115,7 @@ const App = {
             { title: 'Dive into the World of Whales', link: 'https://safiya-fs.github.io/Whale-Anatomy-Module/'},
         ]
 
-        // These constants are referenced for the sparkline in the html documant
-    const carbonDioxideGraph = [
+    const immigrationTargets = [
     {
     topic: 'Atmospheric Carbon Dioxide',
     subtitle: 'Increasing CO2 from 1960 to 2025',
@@ -117,7 +123,7 @@ const App = {
     }
     ];
 
-    const packageGraph = [
+    const immigrationTargets2 = [
         {
             topic: 'Anual Amazon Package Deliveries',
             subtitle: 'Number of Amazon packages delivered from 2023 to 2025',
@@ -152,11 +158,13 @@ const App = {
             toggleHomepage,
             stages,
             step,
-            items,
+            projects,
             nextButtonLabel,
             chooseNextButtonLabel,
-            carbonDioxideGraph,   
-            packageGraph,
+            immigrationTargets,   
+            immigrationTargets2,
+            openDrawer,
+            toggleDrawer,
         };
 
     }

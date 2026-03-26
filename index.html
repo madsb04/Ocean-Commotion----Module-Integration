@@ -47,33 +47,31 @@
 
   <div id="app">
     <v-app>
+      <v-navigation-drawer v-model="openDrawer" style="background-color: rgb(78, 141, 156); color: white;">
+   <v-list>
+          <v-list-item v-for="item in projects" :key="item.title" :href="item.link">
+            <v-list-item-title>
+              {{ item.title }}
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
       <!-- This inserts a bar at the top of the page and alters colour, title, and text details -->
       <v-app-bar color="rgb(78, 141, 156)" height="90">
-         <v-menu>
-        <!-- This code takes the menu's trigger - positioned click - as a variable - props - and applies it to the buttons of the menu in a suscinct line -->
-          <template v-slot:activator="{ props }">
-            <!-- This line input the menu buttons and applies the props variable-->
-            <v-btn icon="mdi-menu" variant="text" v-bind="props"></v-btn>
-          </template>
-          <v-list>
-            <!-- This section applies the titles to the stepper items-->
-            <v-list-item v-for="(item, i) in items" :key="i" :href="item.link" target="_blank">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+        <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon> 
         <v-app-bar-title class="text-center font-weight-bold">
           Ocean Commotion
         </v-app-bar-title>
         <!-- These menu buttons will take users to other components and app pages -->
-      </v-app-bar>
- 
+            
+        </v-app-bar>
+         
       <v-main class="app-background">
         <v-container>
           <!-- initial/home screen, recalls variables from app.js -->           
           <v-card v-if="showHomepage">
           <v-card-title class="text-h5 text-center home-header">
-           Ocean Commotion  
+           Let's find out how online shopping impacts whales and the earth!  
           </v-card-title>
             <v-card-text class="text-center home-header">
               {{ description }}
@@ -197,16 +195,16 @@
                       More Info
                     </v-expansion-panel-title>
                     <v-expansion-panel-text>
-                      <v-card v-for="(target, index) in packageGraph" :key="index" class="mb-4">
+                      <v-card v-for="(target, index) in immigrationTargets2" :key="index" class="mb-4">
                         <v-card-item>
                           <v-card-title>{{ target.topic }}</v-card-title>
                           <v-card-subtitle>{{ target.subtitle }}</v-card-subtitle>
                           </v-card-item>
                         <v-card-text>
-                         <!-- The sparkline inserts the line graph, and color, line width, etc. alter the aesthetic details of the graph-->
-                        <v-sparkline :model-value="target.trend" color="rgb(40, 28, 89)" :line-width="3" :padding="13" :height="100" :labels="['2023', '2024', '2025']" :label-size="8" auto-draw smooth>  </v-sparkline>
+                        <v-sparkline :model-value="target.trend" color="black" :line-width="3" :padding="13" :height="100" :labels="['2023', '2024', '2025']" :label-size="8" auto-draw smooth>  </v-sparkline>
                         </v-card-text>
-                      </v-card>        
+                      </v-card>
+        
                     Amazon has been consistenly increasing its annual parcel deliveries. With main producer hubs located overseas, whale pods will be facing additinal threats as we continue to fill our waters with ocean freight (CapitalOne Shipping Research, 2026). 
                       </v-expansion-panel-text>
                   </v-expansion-panel>
@@ -216,7 +214,6 @@
                     <v-expansion-panel-title>
                       More Info
                     </v-expansion-panel-title>
-                    <!-- the <b> is for bold, and <br> is for line breaks-->
                     <v-expansion-panel-text>
                           - 90% of traded goods are transported by sea, and shipping happens across <b> 92% of whale habitats</b> (Nisi et al., 2024). <br>
                           - Highest-risk areas: <b> Indian Ocean (21.6%)</b>, western north Pacific Ocean (14.5%), Mediterranean (13.3%) (Nisi et al., 2024). <br>
@@ -231,7 +228,6 @@
                     <v-expansion-panel-title>
                       More Info
                     </v-expansion-panel-title>
-                    <!-- the <b> is for bold, and <br> is for line breaks-->
                     <v-expansion-panel-text>
                        - Whale's capacity to store carbon has reduced by <b> 9 million tonnes </b> due to commercial whaling (Pershing et al., n.d.). <br>
                        - Estimated that increasing whale populations could remove 160000 tons of carbon annually via sinking whale carcasses (ie. whale fall) (Pershing et al., n.d.).  
@@ -245,14 +241,13 @@
                       More Info
                     </v-expansion-panel-title>
                     <v-expansion-panel-text>
-                      <v-card v-for="(target, index) in carbonDioxideGraph" :key="index" class="mb-4">
+                      <v-card v-for="(target, index) in immigrationTargets" :key="index" class="mb-4">
                         <v-card-item>
                           <v-card-title>{{ target.topic }}</v-card-title>
                           <v-card-subtitle>{{ target.subtitle }}</v-card-subtitle>
                           </v-card-item>
-                          <!-- The sparkline inserts the line graph, and color, line width, etc. alter the aesthetic details of the graph-->
                         <v-card-text>
-                        <v-sparkline :model-value="target.trend" color="rgb(40, 28, 89)" :line-width="3" :padding="13" :height="100" :labels="['1960', '1992', '2025']" :label-size="8" auto-draw smooth>  </v-sparkline>
+                        <v-sparkline :model-value="target.trend" color="black" :line-width="3" :padding="13" :height="100" :labels="['1960', '1992', '2025']" :label-size="8" auto-draw smooth>  </v-sparkline>
                         </v-card-text>
                       </v-card>
         
